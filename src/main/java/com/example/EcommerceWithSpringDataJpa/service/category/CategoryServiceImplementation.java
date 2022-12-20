@@ -88,7 +88,7 @@ public class CategoryServiceImplementation implements CategoryService{
      */
     @Override
     public Category getCategoryByID(Long id) {
-        if(id == -1)
+        if(id <= -1)
             throw new IllegalArgumentException();
         Optional<Category> category=repository.findById(id);
         if(category.isPresent())

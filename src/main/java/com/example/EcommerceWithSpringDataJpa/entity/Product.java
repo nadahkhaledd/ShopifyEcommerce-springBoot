@@ -117,7 +117,7 @@ public class Product {
         this.price = price;
     }
 
-    @ManyToOne(fetch = FetchType.EAGER,cascade =CascadeType.MERGE)
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "category_id")
     public Category getCategory() {
         return category;

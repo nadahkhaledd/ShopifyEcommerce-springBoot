@@ -61,8 +61,10 @@ public class Category {
         this.imagePath = imagePath;
     }
 
-    @OneToMany( orphanRemoval=true ,mappedBy = "category", fetch = FetchType.EAGER,cascade  = CascadeType.ALL)
-    public List<Product> getProducts() {
+  //  @OneToMany( orphanRemoval=true ,mappedBy = "category", fetch = FetchType.EAGER,cascade  = CascadeType.ALL)
+  @OneToMany( orphanRemoval=true ,mappedBy = "category", fetch = FetchType.EAGER,cascade  = {CascadeType.ALL,CascadeType.REMOVE})
+
+  public List<Product> getProducts() {
         return products;
     }
 

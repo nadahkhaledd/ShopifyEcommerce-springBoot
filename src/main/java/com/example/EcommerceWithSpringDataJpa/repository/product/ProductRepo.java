@@ -1,93 +1,20 @@
 package com.example.EcommerceWithSpringDataJpa.repository.product;
 
 import com.example.EcommerceWithSpringDataJpa.entity.Product;
-
+import org.springframework.data.repository.query.Param;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
 
 import java.util.List;
 
 public interface ProductRepo extends JpaRepository<Product,Long> {
- //   Response<Product> getProduct(int productId);
-//
-//    /**
-//     *  add product this function used by admin to add product to database
-//     *
-//     * @param product product object to be added
-//     */
-//   Product> addProduct(Product product);
-//    /**
-//     * update product this function is used by admin to update product from database
-//     * @param product product object to be updated
-//     * @Return nothing
-//     */
-//    Response<Product> updateProduct(Product product);
-//
-//    /**
-//     * delete product function invoked by admin to delete product from database
-//     * @param product product object to be deleted
-//     * @Return nothing
-//     */
-//    Response<Product> deleteProduct(Product product);
-//
-//    /**
-//     * delete product function invoked by admin to delete product from database
-//     * @param id product id to be deleted
-//     * @Return boolean
-//     */
-//    Response<Boolean> deleteProduct(int id);
-//
-//    /**
-//     * update product rate used by customers to update rate to database
-//     * @param productId productId  id of the product to be updated
-//     * @param rate rate new rate of the product
-//     * @return  true if a row is updated in the database
-//     */
-//    Response<Boolean> updateProductRate(int productId, float rate);
-//
-//    /**
-//     * update product quantity
-//     * function takes id of the product and new quantity and apply this changes to database
-//     * @param productId productId id of the product to be updated
-//     * @param quantity quantity new quantity of the product to be updated
-//     * @return  true if a row is updated in the database
-//     */
-//    Response<Boolean> updateProductQuantity(int productId, int quantity);
-//
-//    /**
-//     * get products
-//     * function used to return all products from the database
-//     * @return products
-//     */
-//   Response<List<Product>> getProducts();
-//
-//    /**
-//     * get number of products for a category.
-//     * @param categoryID id of category.
-//     * @return number of products
-//     */
-//   // Response<Integer> getNumberOfCategoryProducts(int categoryID);
-//
-//    /**
-//     * get products by category
-//     *
-//     * @param categoryId categoryId id of category we want to retrieve it's products
-//     * @return {@link List} list of products
-//     */
-//    Response<List<Product>> getProductsByCategory(int categoryId);
-//
-//    /**
-//     * search by product name
-//     * takes a product name and retrieve all products matching this name
-//     * @param productName productName
-//     * @return list of products
-//     */
-//    Response<List<Product>> searchByProductName(String productName);
-//
-//    /**
-//     * get products by id
-//     * retrieves product with the given id
-//     * @param productId id of product
-//     * @return  product
-//     */
-//     Response<Product> getProductsById(int productId);
+
+   String getProductByName(String name);
+   @Query("UPDATE Product set availableQuantity= :quantity WHERE id = :productId")
+   void updateProductQuantity(@Param("productId")Long productId,@Param("quantity") int quantity);
+   @Query("select p from Product as p inner join p.category as c where c.id=:categoryId")
+   List<Product> getProductsByCategory(@Param("categoryId")Long categoryId) ;
+   @Query("from Product where name like :searchKey or name= :productName")
+   List<Product> searchByProductName(@Param("productName")String productName,@Param("searchKey") String searchKey) ;
+
 }
