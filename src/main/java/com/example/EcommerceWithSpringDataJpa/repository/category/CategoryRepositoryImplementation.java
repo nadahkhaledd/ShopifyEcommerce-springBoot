@@ -1,16 +1,4 @@
 package com.example.EcommerceWithSpringDataJpa.repository.category;
-
-import com.example.EcommerceWithSpringDataJpa.entity.Category;
-import com.example.EcommerceWithSpringDataJpa.model.Response;
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-import org.hibernate.Transaction;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Repository;
-
-import java.util.List;
-
-@Repository
 public class CategoryRepositoryImplementation  {
 
 //    private final SessionFactory factory;
