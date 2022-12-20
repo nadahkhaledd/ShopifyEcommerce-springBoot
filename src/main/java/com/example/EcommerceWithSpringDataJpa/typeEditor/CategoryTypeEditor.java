@@ -1,7 +1,7 @@
 package com.example.EcommerceWithSpringDataJpa.typeEditor;
 
-import org.example.entity.Category;
-import org.example.service.category.CategoryService;
+import com.example.EcommerceWithSpringDataJpa.entity.Category;
+//import com.example.EcommerceWithSpringDataJpa.service.category.CategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -10,7 +10,7 @@ import java.beans.PropertyEditorSupport;
 @Component
 public class CategoryTypeEditor extends PropertyEditorSupport {
 
-
+/*
     private CategoryService categoryService;
 
 
@@ -32,4 +32,6 @@ public class CategoryTypeEditor extends PropertyEditorSupport {
         Category category = categoryService.getCategoryByName(text).getObjectToBeReturned();
         this.setValue(category);
     }
+    */
+
 }

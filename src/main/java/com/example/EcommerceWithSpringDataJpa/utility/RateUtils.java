@@ -1,6 +1,6 @@
 package com.example.EcommerceWithSpringDataJpa.utility;
 
-import org.example.model.Star;
+import com.example.EcommerceWithSpringDataJpa.model.Star;
 
 public class RateUtils {
    public Star computeNumberOfStars(double rate){
