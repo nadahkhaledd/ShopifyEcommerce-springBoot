@@ -1,6 +1,6 @@
-package com.example.ecommercewithspringdatajpa.service.user;
+package com.example.EcommerceWithSpringDataJpa.service.user;
 
-import com.example.ecommercewithspringdatajpa.entity.User;
+import com.example.EcommerceWithSpringDataJpa.entity.User;
 
 import java.util.List;
 

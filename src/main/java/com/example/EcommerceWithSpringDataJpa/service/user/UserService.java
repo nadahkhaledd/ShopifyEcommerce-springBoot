@@ -1,8 +1,8 @@
-package com.example.ecommercewithspringdatajpa.service.user;
+package com.example.EcommerceWithSpringDataJpa.service.user;
 
-import com.example.ecommercewithspringdatajpa.entity.User;
-import com.example.ecommercewithspringdatajpa.exception.UserNotFoundException;
-import com.example.ecommercewithspringdatajpa.repository.UserRepository;
+import com.example.EcommerceWithSpringDataJpa.entity.User;
+import com.example.EcommerceWithSpringDataJpa.exception.UserNotFoundException;
+import com.example.EcommerceWithSpringDataJpa.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

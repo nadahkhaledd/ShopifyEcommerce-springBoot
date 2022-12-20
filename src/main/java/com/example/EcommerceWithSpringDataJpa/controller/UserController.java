@@ -1,7 +1,7 @@
-package com.example.ecommercewithspringdatajpa.controller;
+package com.example.EcommerceWithSpringDataJpa.controller;
 
-import com.example.ecommercewithspringdatajpa.entity.User;
-import com.example.ecommercewithspringdatajpa.service.user.IUserService;
+import com.example.EcommerceWithSpringDataJpa.entity.User;
+import com.example.EcommerceWithSpringDataJpa.service.user.IUserService;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.ResponseBody;
