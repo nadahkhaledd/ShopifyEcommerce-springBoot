@@ -1,5 +1,6 @@
 package com.example.ecommerceWithSpringDataJpa.controller;
 
+import com.example.ecommerceWithSpringDataJpa.entity.User;
 import com.example.ecommerceWithSpringDataJpa.service.user.IUserService;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -32,7 +33,7 @@ public class UserController {
     @GetMapping("/users/{id}")
     @Produces({MediaType.APPLICATION_JSON})
     @ResponseBody
-    public Object usersBy(@PathVariable("id") String id){
+    public User usersBy(@PathVariable("id") String id){
             return userService.getByID(Integer.parseInt(id));
     }
 
