@@ -3,6 +3,7 @@ package com.example.EcommerceWithSpringDataJpa.utility;
 import com.example.EcommerceWithSpringDataJpa.model.Star;
 
 public class RateUtils {
+
    public Star computeNumberOfStars(double rate){
        if(rate<0)
            throw new IllegalArgumentException();
