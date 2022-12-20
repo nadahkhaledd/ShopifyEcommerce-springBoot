@@ -1,7 +1,7 @@
 package com.example.ecommercewithspringdatajpa.service.category;
 
 import com.example.ecommercewithspringdatajpa.entity.Category;
-import com.example.ecommercewithspringdatajpa.repository.category.CategoryRepository;
+import com.example.ecommercewithspringdatajpa.repository.CategoryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -31,11 +31,8 @@ public class CategoryServiceImplementation implements CategoryService{
         if(repository.getCategoryByName(category.getName())!=null)
            throw new IllegalArgumentException("name already exists");
         repository.save(category);
-     /*   if(repository.getCategoryByName(category.getName()).getObjectToBeReturned()!=null)
-            return new Response<>("category already exists", 400, true, true);
 
-       return  repository.addCategory(category);
-    */}
+    }
 
     /**
      * @InheritedDoc
@@ -59,7 +56,6 @@ public class CategoryServiceImplementation implements CategoryService{
         if(category == null)
             throw new NullPointerException();
         repository.delete(category);
-      //  return repository.removeCategory(category);
     }
 
     /**

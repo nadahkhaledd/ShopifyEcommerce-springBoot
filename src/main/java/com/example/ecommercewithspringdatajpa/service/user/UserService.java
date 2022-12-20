@@ -11,13 +11,11 @@ import java.util.List;
 @Service
 public class UserService implements IUserService{
 
-    private final UserRepository userRepo;
     private final UserRepository userRepository;
 
     @Autowired
     public UserService(UserRepository userRepo,
                        UserRepository userRepository){
-        this.userRepo = userRepo;
         this.userRepository = userRepository;
     }
 

@@ -1,4 +1,4 @@
-package com.example.ecommercewithspringdatajpa.repository.product;
+package com.example.ecommercewithspringdatajpa.repository;
 
 import com.example.ecommercewithspringdatajpa.entity.Product;
 
