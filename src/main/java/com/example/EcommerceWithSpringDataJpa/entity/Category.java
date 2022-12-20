@@ -10,7 +10,7 @@ import java.util.Objects;
 
 @Entity
 public class Category {
-    private int id;
+    private Long id;
     private String name;
     private String imagePath;
     private List<Product> products;
@@ -33,11 +33,11 @@ public class Category {
     @NotNull
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "category_id", nullable = false, unique = true)
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

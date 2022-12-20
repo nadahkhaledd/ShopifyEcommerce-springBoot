@@ -14,7 +14,7 @@ import java.util.Objects;
 @Entity
 public class Product {
 
-    private int id;
+    private Long id;
     private String name;
     private String imagePath;
     private double price;
@@ -77,12 +77,15 @@ public class Product {
     @NotNull
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "product_id", unique = true, nullable = false)
-    public int getId() {
+    public Long getId() {
         return id;
     }
-    public void setId(int id) {
+
+    public void setId(Long id) {
         this.id = id;
     }
+
+
 
     @NotBlank
     @NotNull
