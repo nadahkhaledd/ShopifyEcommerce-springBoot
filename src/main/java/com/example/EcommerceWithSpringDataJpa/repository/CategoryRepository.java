@@ -1,6 +1,6 @@
-package com.example.ecommercewithspringdatajpa.repository;
+package com.example.EcommerceWithSpringDataJpa.repository;
 
-import com.example.ecommercewithspringdatajpa.entity.Category;
+import com.example.EcommerceWithSpringDataJpa.entity.Category;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;

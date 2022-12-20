@@ -1,7 +1,7 @@
-package com.example.ecommercewithspringdatajpa.service.category;
+package com.example.EcommerceWithSpringDataJpa.service.category;
 
-import com.example.ecommercewithspringdatajpa.entity.Category;
-import com.example.ecommercewithspringdatajpa.repository.CategoryRepository;
+import com.example.EcommerceWithSpringDataJpa.entity.Category;
+import com.example.EcommerceWithSpringDataJpa.repository.CategoryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

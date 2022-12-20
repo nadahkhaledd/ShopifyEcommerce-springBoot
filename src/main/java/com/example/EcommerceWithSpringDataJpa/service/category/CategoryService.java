@@ -1,8 +1,8 @@
-package com.example.ecommercewithspringdatajpa.service.category;
+package com.example.EcommerceWithSpringDataJpa.service.category;
 
 
 
-import com.example.ecommercewithspringdatajpa.entity.Category;
+import com.example.EcommerceWithSpringDataJpa.entity.Category;
 
 import java.util.List;
 

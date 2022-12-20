@@ -1,7 +1,7 @@
-package com.example.ecommercewithspringdatajpa.utility;
+package com.example.EcommerceWithSpringDataJpa.utility;
 
-import com.example.ecommercewithspringdatajpa.entity.Category;
-import com.example.ecommercewithspringdatajpa.entity.Product;
+import com.example.EcommerceWithSpringDataJpa.entity.Category;
+import com.example.EcommerceWithSpringDataJpa.entity.Product;
 
 import java.util.HashSet;
 import java.util.List;

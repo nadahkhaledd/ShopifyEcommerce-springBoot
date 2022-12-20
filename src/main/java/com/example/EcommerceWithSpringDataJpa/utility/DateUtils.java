@@ -1,4 +1,4 @@
-package com.example.ecommercewithspringdatajpa.utility;
+package com.example.EcommerceWithSpringDataJpa.utility;
 
 import java.text.DateFormat;
 import java.text.ParseException;

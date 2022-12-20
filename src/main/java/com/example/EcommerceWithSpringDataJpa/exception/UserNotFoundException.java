@@ -1,4 +1,4 @@
-package com.example.ecommercewithspringdatajpa.exception;
+package com.example.EcommerceWithSpringDataJpa.exception;
 
 public class UserNotFoundException extends RuntimeException{
     public UserNotFoundException(Integer id) {

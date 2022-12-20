@@ -1,4 +1,4 @@
-package com.example.ecommercewithspringdatajpa.model;
+package com.example.EcommerceWithSpringDataJpa.model;
 
 public class Email {
 

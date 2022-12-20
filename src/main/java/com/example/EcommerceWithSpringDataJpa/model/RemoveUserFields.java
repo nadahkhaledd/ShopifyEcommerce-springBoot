@@ -1,4 +1,4 @@
-package com.example.ecommercewithspringdatajpa.model;
+package com.example.EcommerceWithSpringDataJpa.model;
 
 import jakarta.validation.constraints.NotBlank;
 

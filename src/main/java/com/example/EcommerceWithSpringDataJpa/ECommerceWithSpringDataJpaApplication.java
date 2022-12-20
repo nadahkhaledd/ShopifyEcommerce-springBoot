@@ -1,4 +1,4 @@
-package com.example.ecommercewithspringdatajpa;
+package com.example.EcommerceWithSpringDataJpa;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
