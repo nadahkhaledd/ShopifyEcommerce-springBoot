@@ -1,11 +1,12 @@
-package com.example.ecommercewithspringdatajpa.entity;
+package com.example.EcommerceWithSpringDataJpa.entity;
 
-import com.example.ecommercewithspringdatajpa.enums.CustomerStatus;
-import com.example.ecommercewithspringdatajpa.enums.Gender;
+import com.example.EcommerceWithSpringDataJpa.enums.CustomerStatus;
+import com.example.EcommerceWithSpringDataJpa.enums.Gender;
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @DiscriminatorValue("1")
@@ -18,6 +19,17 @@ public class Customer extends User {
 
     @OneToMany(cascade = CascadeType.ALL,mappedBy = "customer")
     private List<Rate> Rates;
+
+    @OneToMany(cascade = CascadeType.ALL,fetch = FetchType.EAGER,mappedBy = "user")
+    private Set<ShoppingCartProducts> shoppingCartProducts;
+
+    public Set<ShoppingCartProducts> getShoppingCartProducts() {
+        return shoppingCartProducts;
+    }
+
+    public void setShoppingCartProducts(Set<ShoppingCartProducts> shoppingCartProducts) {
+        this.shoppingCartProducts = shoppingCartProducts;
+    }
 
     public Customer() {
     }
