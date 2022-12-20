@@ -1,6 +1,7 @@
 package com.example.EcommerceWithSpringDataJpa.entity;
 
 import jakarta.validation.constraints.NotBlank;
+import lombok.*;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
@@ -9,10 +10,29 @@ import java.util.List;
 import java.util.Objects;
 
 @Entity
+@NoArgsConstructor
+@AllArgsConstructor
+@Setter
+@Getter
+@ToString
+@Builder
 public class Category {
+
+    @Id
+    @NotNull
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "category_id", nullable = false, unique = true)
     private Long id;
+
+    @NotBlank
+    @Column(nullable = false, unique = true)
     private String name;
+
+    @NotBlank
+    @Column(nullable = false, length = 300)
     private String imagePath;
+
+    @OneToMany( orphanRemoval=true ,mappedBy = "category", fetch = FetchType.EAGER,cascade  = CascadeType.ALL)
     private List<Product> products;
 
     public Category(String name, String imagePath, List<Product> products) {
@@ -27,48 +47,6 @@ public class Category {
         this.products = new ArrayList<>();
     }
 
-    public Category() {}
-
-    @Id
-    @NotNull
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "category_id", nullable = false, unique = true)
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    @NotBlank
-    @Column(nullable = false, unique = true)
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    @NotBlank
-    @Column(nullable = false, length = 300)
-    public String getImagePath() {
-        return imagePath;
-    }
-
-    public void setImagePath(String imagePath) {
-        this.imagePath = imagePath;
-    }
-
-    @OneToMany( orphanRemoval=true ,mappedBy = "category", fetch = FetchType.EAGER,cascade  = CascadeType.ALL)
-    public List<Product> getProducts() {
-        return products;
-    }
-
-    public void setProducts(List<Product> products) {
-        this.products = products;
-    }
 
     @Override
     public boolean equals(Object o) {
@@ -83,13 +61,5 @@ public class Category {
         return Objects.hash(id);
     }
 
-    @Override
-    public String toString() {
-        return "Category{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", imagePath='" + imagePath + '\'' +
-                ", products=" + products +
-                '}';
-    }
+
 }

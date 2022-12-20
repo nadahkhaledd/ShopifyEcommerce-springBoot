@@ -1,12 +1,17 @@
 package com.example.EcommerceWithSpringDataJpa.entity;
 
+import lombok.*;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
-
 import java.util.List;
 
 @Entity
+@NoArgsConstructor
+@AllArgsConstructor
+@Setter
+@Getter
+@Builder
 public class Address {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -26,9 +31,6 @@ public class Address {
     private List<Order> order;
 
 
-    public Address() {
-    }
-
     public Address(String street, int buildingNumber, String city) {
         this.street = street;
         this.buildingNumber = buildingNumber;
@@ -42,51 +44,4 @@ public class Address {
         this.customer = customer;
     }
 
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public String getStreet() {
-        return street;
-    }
-
-    public void setStreet(String street) {
-        this.street = street;
-    }
-
-    public int getBuildingNumber() {
-        return buildingNumber;
-    }
-
-    public void setBuildingNumber(int buildingNumber) {
-        this.buildingNumber = buildingNumber;
-    }
-
-    public String getCity() {
-        return city;
-    }
-
-    public void setCity(String city) {
-        this.city = city;
-    }
-
-    public Customer getCustomer() {
-        return customer;
-    }
-
-    public void setCustomer(Customer customer) {
-        this.customer = customer;
-    }
-
-    public List<Order> getOrder() {
-        return order;
-    }
-
-    public void setOrder(List<Order> order) {
-        this.order = order;
-    }
 }

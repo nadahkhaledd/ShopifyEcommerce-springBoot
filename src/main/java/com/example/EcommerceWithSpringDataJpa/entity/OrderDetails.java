@@ -1,5 +1,6 @@
 package com.example.EcommerceWithSpringDataJpa.entity;
 
+import lombok.*;
 import org.hibernate.annotations.LazyCollection;
 import org.hibernate.annotations.LazyCollectionOption;
 
@@ -7,6 +8,11 @@ import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 
 @Entity
+@NoArgsConstructor
+@AllArgsConstructor
+@Setter
+@Getter
+@ToString
 @Table(name="order_details")
 public class OrderDetails {
     @Id
@@ -16,15 +22,6 @@ public class OrderDetails {
     @JoinColumn(name = "order_id")
     private Order order;
 
-
-
-    public Order getOrder() {
-        return order;
-    }
-
-    public void setOrder(Order order) {
-        this.order = order;
-    }
     @ManyToOne
     @JoinColumn(name = "product_id")
     @LazyCollection(LazyCollectionOption.FALSE)
@@ -34,36 +31,8 @@ public class OrderDetails {
     private int productQuantity;
 
 
-
-    public OrderDetails() {
-    }
     public OrderDetails(Order order,int productQuantity) {
         this.order = order;
         this.productQuantity = productQuantity;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-
-    public int getProductQuantity() {
-        return productQuantity;
-    }
-
-    public void setProductQuantity(int productQuantity) {
-        this.productQuantity = productQuantity;
-    }
-
-    public Product getProduct() {
-        return product;
-    }
-
-    public void setProduct(Product product) {
-        this.product = product;
     }
 }

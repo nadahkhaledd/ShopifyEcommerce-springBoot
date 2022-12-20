@@ -2,6 +2,7 @@ package com.example.EcommerceWithSpringDataJpa.entity;
 
 
 import jakarta.validation.constraints.NotBlank;
+import lombok.*;
 import org.hibernate.annotations.LazyCollection;
 import org.hibernate.annotations.LazyCollectionOption;
 
@@ -12,22 +13,55 @@ import java.util.List;
 import java.util.Objects;
 
 @Entity
+@AllArgsConstructor
+@Setter
+@Getter
+@ToString
 public class Product {
 
+    @Id
+    @NotNull
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "product_id", unique = true, nullable = false)
     private Long id;
+
+    @NotBlank
+    @NotNull
+    @Column(nullable = false, length = 45)
     private String name;
+
+    @NotBlank
+    @NotNull
+    @Column(name = "image_path", nullable = false, length = 300)
     private String imagePath;
+
+    @NotNull
+    @Column(nullable = false)
+    @Min(1)
     private double price;
 
+    @ManyToOne(fetch = FetchType.EAGER,cascade =CascadeType.MERGE)
+    @JoinColumn(name = "category_id")
     private Category category;
 
     private String description = "";
+
+    @NotNull
+    @Column(name = "available_quantity", nullable = false)
+    @Min(0)
     private int availableQuantity;
 
+    @Transient
     private double rate;
 
+    @OneToMany(cascade = CascadeType.ALL,mappedBy = "product")
+    @LazyCollection(LazyCollectionOption.FALSE)
     private List<OrderDetails> orderDetails;
 
+    @OneToMany(cascade = {CascadeType.PERSIST,
+            CascadeType.DETACH,
+            CascadeType.REFRESH,
+            CascadeType.REMOVE},mappedBy = "product",fetch = FetchType.EAGER,orphanRemoval = true)
     private List<Rate> rates;
 
     public Product() {
@@ -43,107 +77,6 @@ public class Product {
         this.rate = 0;
 
     }
-    @Transient//will not be added as a column in the database
-    public double getRate() {
-        return rate;
-    }
-
-    public void setRate(double rate) {
-        this.rate = rate;
-    }
-
-    @OneToMany(cascade = {CascadeType.PERSIST,
-            CascadeType.DETACH,
-            CascadeType.REFRESH,
-            CascadeType.REMOVE},mappedBy = "product",fetch = FetchType.EAGER,orphanRemoval = true)
-    public List<Rate> getRates() {
-        return rates;
-    }
-
-    public void setRates(List<Rate> rates) {
-        this.rates = rates;
-    }
-
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    @Id
-    @NotNull
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "product_id", unique = true, nullable = false)
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-
-
-    @NotBlank
-    @NotNull
-    @Column(nullable = false, length = 45)
-    public String getName() {
-        return name;
-    }
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    @NotBlank
-    @NotNull
-    @Column(name = "image_path", nullable = false, length = 300)
-    public String getImagePath() {
-        return imagePath;
-    }
-    public void setImagePath(String imagePath) {
-        this.imagePath = imagePath;
-    }
-
-    @NotNull
-    @Column(nullable = false)
-    @Min(1)
-    public double getPrice() {
-        return price;
-    }
-    public void setPrice(double price) {
-        this.price = price;
-    }
-
-    @ManyToOne(fetch = FetchType.EAGER,cascade =CascadeType.MERGE)
-    @JoinColumn(name = "category_id")
-    public Category getCategory() {
-        return category;
-    }
-    public void setCategory(Category category) {
-        this.category = category;
-    }
-
-    @NotNull
-    @Column(name = "available_quantity", nullable = false)
-    @Min(0)
-    public int getAvailableQuantity() {
-        return availableQuantity;
-    }
-    public void setAvailableQuantity(int availableQuantity) {
-        this.availableQuantity = availableQuantity;
-    }
-    @OneToMany(cascade = CascadeType.ALL,mappedBy = "product")
-    @LazyCollection(LazyCollectionOption.FALSE)
-    public List<OrderDetails> getOrderDetails() {
-        return orderDetails;
-    }
-
-    public void setOrderDetails(List<OrderDetails> orderDetails) {
-        this.orderDetails = orderDetails;
-    }
 
     @Override
     public boolean equals(Object o) {
@@ -158,14 +91,5 @@ public class Product {
         return Objects.hash(id);
     }
 
-    @Override
-    public String toString() {
-        return "Product{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", imagePath='" + imagePath + '\'' +
-                ", price=" + price +
-                ", availableQuantity=" + availableQuantity +
-                '}';
-    }
+
 }
