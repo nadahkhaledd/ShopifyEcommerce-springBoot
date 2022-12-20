@@ -40,10 +40,10 @@ public class AdminController {
         return adminService.getByID(Integer.parseInt(id));
     }
 
-    @PostMapping("/deactivate")
+    @GetMapping("/deactivate/{id}")
     @Consumes(MediaType.APPLICATION_JSON)
-    public ResponseEntity<String> deactivateCustomer(@RequestBody String email){
-        adminService.deactivateCustomer(email);
+    public ResponseEntity<String> deactivateCustomer(@PathVariable("id") String id){
+        adminService.deactivateCustomer(Integer.parseInt(id));
         return new ResponseEntity<String>("customer deactivated successfully", HttpStatus.valueOf(200));
     }
 

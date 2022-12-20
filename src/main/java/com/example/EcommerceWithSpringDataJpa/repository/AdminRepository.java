@@ -32,6 +32,6 @@ public interface AdminRepository extends JpaRepository<Admin, Integer> {
 
     @Transactional
     @Modifying
-    @Query("Update User SET status=:status WHERE email=:email")
-    void deactivateCustomer(String email, CustomerStatus status);
+    @Query("Update User SET status=:status WHERE id=:id")
+    void deactivateCustomer(Integer id,  CustomerStatus status);
 }

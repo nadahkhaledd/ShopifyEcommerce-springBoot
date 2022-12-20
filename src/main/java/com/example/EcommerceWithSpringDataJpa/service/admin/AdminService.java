@@ -65,9 +65,7 @@ public class AdminService implements IAdminService{
     }
 
     @Override
-    public void deactivateCustomer(String email) {
-        User user = userService.getByEmail(email);
-        user.setStatus(CustomerStatus.DEACTIVATED);
-        adminRepository.deactivateCustomer(email, CustomerStatus.DEACTIVATED);
+    public void deactivateCustomer(Integer id) {
+        adminRepository.deactivateCustomer(id, CustomerStatus.DEACTIVATED);
     }
 }

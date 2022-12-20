@@ -21,5 +21,5 @@ public interface IAdminService {
 
     void deleteByID(Integer id);
 
-    void deactivateCustomer(String email);
+    void deactivateCustomer(Integer id);
 }
