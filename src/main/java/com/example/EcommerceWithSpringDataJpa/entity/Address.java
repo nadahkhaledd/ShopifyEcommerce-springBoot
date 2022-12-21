@@ -1,5 +1,6 @@
 package com.example.EcommerceWithSpringDataJpa.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 
 import javax.persistence.*;
@@ -18,13 +19,14 @@ public class Address {
     private int id;
     @NotNull
     private String street ;
-   @NotNull
+    @NotNull
     private int buildingNumber;
     @NotNull
     private String city;
 
     @JoinColumn(name = "customer_id")
     @ManyToOne
+    @JsonIgnore
     private Customer customer;
 
     @OneToMany(cascade = CascadeType.ALL,mappedBy = "address")
