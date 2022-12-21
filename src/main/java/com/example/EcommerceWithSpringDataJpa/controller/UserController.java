@@ -2,10 +2,7 @@ package com.example.EcommerceWithSpringDataJpa.controller;
 
 import com.example.EcommerceWithSpringDataJpa.entity.User;
 import com.example.EcommerceWithSpringDataJpa.service.user.IUserService;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
@@ -13,6 +10,7 @@ import javax.ws.rs.core.MediaType;
 import java.util.Optional;
 
 @RestController
+@RequestMapping(path = "/users")
 public class UserController {
 
     private IUserService userService;
@@ -21,7 +19,7 @@ public class UserController {
         this.userService = userService;
     }
 
-    @GetMapping("/users")
+    @GetMapping("")
     @Produces({MediaType.APPLICATION_JSON})
     public Object users(@QueryParam("email") Optional<String> email){
         if(email.isPresent())
@@ -30,7 +28,7 @@ public class UserController {
         return userService.getAll();
     }
 
-    @GetMapping("/users/{id}")
+    @GetMapping("/{id}")
     @Produces({MediaType.APPLICATION_JSON})
     @ResponseBody
     public User usersBy(@PathVariable("id") String id){

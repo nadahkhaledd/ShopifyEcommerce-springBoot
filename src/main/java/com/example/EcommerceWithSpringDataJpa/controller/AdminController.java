@@ -44,20 +44,20 @@ public class AdminController {
     @Consumes(MediaType.APPLICATION_JSON)
     public ResponseEntity<String> deactivateCustomer(@PathVariable("id") String id){
         adminService.deactivateCustomer(Integer.parseInt(id));
-        return new ResponseEntity<String>("customer deactivated successfully", HttpStatus.valueOf(200));
+        return new ResponseEntity<>("customer deactivated successfully", HttpStatus.valueOf(200));
     }
 
     @DeleteMapping("/{id}")
     public ResponseEntity<String> deleteByID(@PathVariable("id") String id)
     {
         adminService.deleteByID(Integer.parseInt(id));
-        return new ResponseEntity<String>("admin deleted successfully", HttpStatus.valueOf(200));
+        return new ResponseEntity<>("admin deleted successfully", HttpStatus.valueOf(200));
     }
 
     @PostMapping("/new")
     public ResponseEntity<Admin> save(@RequestBody Admin admin){
         Admin savedAdmin =  adminService.save(admin);
-        return new ResponseEntity<Admin>(savedAdmin, HttpStatus.valueOf(201));
+        return new ResponseEntity<>(savedAdmin, HttpStatus.valueOf(201));
     }
 
     @PatchMapping("/{id}")
