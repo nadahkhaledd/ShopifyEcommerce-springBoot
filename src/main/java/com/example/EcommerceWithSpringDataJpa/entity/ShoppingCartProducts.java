@@ -1,64 +1,38 @@
 package com.example.EcommerceWithSpringDataJpa.entity;
 
+import lombok.*;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 
 @Entity
+@NoArgsConstructor
+@AllArgsConstructor
+@Setter
+@Getter
+@ToString
 public class ShoppingCartProducts {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(unique = true, nullable = false)
     private int id;
+
+    @NotNull
+    @Column(name = "product_quantity", nullable = false)
     private int productQuantity;
+
+    @OneToOne
+    @JoinColumn(name="product_id", nullable = false)
     private Product product;
+
+    @ManyToOne()
+    @JoinColumn(name = "user_id")
     private User user;
-    public ShoppingCartProducts() {}
 
     public ShoppingCartProducts(int productQuantity, Product product, User user) {
         this.productQuantity = productQuantity;
         this.product = product;
         this.user = user;
-    }
-
-    @ManyToOne()
-    @JoinColumn(name = "user_id")
-
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
-    }
-
-
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(unique = true, nullable = false)
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    @OneToOne
-    @JoinColumn(name="product_id", nullable = false)
-    public Product getProduct() {
-        return product;
-    }
-
-    public void setProduct(Product product) {
-        this.product = product;
-    }
-
-    @NotNull
-    @Column(name = "product_quantity", nullable = false)
-    public int getProductQuantity() {
-        return productQuantity;
-    }
-
-    public void setProductQuantity(int productQuantity) {
-        this.productQuantity = productQuantity;
     }
 }

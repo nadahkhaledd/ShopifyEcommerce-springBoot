@@ -2,12 +2,20 @@ package com.example.EcommerceWithSpringDataJpa.entity;
 
 import com.example.EcommerceWithSpringDataJpa.enums.CustomerStatus;
 import com.example.EcommerceWithSpringDataJpa.enums.Gender;
+import lombok.*;
+
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Set;
 
 @Entity
+@NoArgsConstructor
+@AllArgsConstructor
+@Setter
+@Getter
+@ToString
 @DiscriminatorValue("1")
 public class Customer extends User {
      private CustomerStatus status=CustomerStatus.DEACTIVATED;
@@ -19,8 +27,9 @@ public class Customer extends User {
     @OneToMany(cascade = CascadeType.ALL,mappedBy = "customer")
     private List<Rate> Rates;
 
-    public Customer() {
-    }
+    @OneToMany(cascade = CascadeType.ALL,fetch = FetchType.EAGER,mappedBy = "user")
+    private Set<ShoppingCartProducts> shoppingCartProducts;
+
 
     public Customer(int id, String firstName, String lastName, String email, String password, Gender gender, Date dateOfBirth, CustomerStatus status, int passwordAttempts) {
         super(id, firstName, lastName, email, password, gender, dateOfBirth);
@@ -48,36 +57,4 @@ public class Customer extends User {
         this.status = status;
     }
 
-    public CustomerStatus getStatus() {
-        return status;
-    }
-
-    public List<Rate> getRates() {
-        return Rates;
-    }
-
-    public void setRates(List<Rate> rates) {
-        Rates = rates;
-    }
-
-
-    public void setStatus(CustomerStatus status) {
-        this.status = status;
-    }
-
-    public int getPasswordAttempts() {
-        return passwordAttempts;
-    }
-
-    public void setPasswordAttempts(int passwordAttempts) {
-        this.passwordAttempts = passwordAttempts;
-    }
-
-    public List<Address> getAddresses() {
-        return addresses;
-    }
-
-    public void setAddresses(List<Address> addresses) {
-        this.addresses = addresses;
-    }
 }

@@ -12,7 +12,7 @@ public class DateUtils {
         try {
             return new SimpleDateFormat("yyyy-MM-dd").parse(dateString);
         } catch (ParseException e) {
-            throw new RuntimeException(e);
+            throw new IllegalArgumentException();
         }
     }
 
@@ -22,15 +22,13 @@ public class DateUtils {
     }
 
     public Date changeFormat(String format, Date date){
-        SimpleDateFormat DateFormat = new SimpleDateFormat(format);
-        Date formattedDate = convertStringToDate(DateFormat.format(date));
-        return formattedDate;
+        SimpleDateFormat dateFormat = new SimpleDateFormat(format);
+        return convertStringToDate(dateFormat.format(date));
     }
 
     public String convertDateToString(Date date){
         DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
-        String dateString = df.format(date);
-        return dateString;
+        return df.format(date);
     }
 
 }
